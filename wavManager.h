@@ -15,6 +15,6 @@ public:
 
 public:
 	void loadWav(const string &fileName);
-};
+};/home/wes/cs202/labs/lab8
 
 #endif
