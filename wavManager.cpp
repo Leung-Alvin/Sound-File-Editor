@@ -10,4 +10,6 @@ WavManager::WavManager(const string &fileName){
 
 void WavManager::loadWav(const string &fileName){
 	std::ifstream ifs(fileName, ios::binary | ios::in);
+	//if(ifs.is_open()){
+		//ifs.read((char*)&wa
 }

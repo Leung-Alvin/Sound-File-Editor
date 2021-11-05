@@ -7,7 +7,7 @@
 
 using namespace std;
 
-typedef struct WAV_HEADER{
+typedef struct wav_header{
 	//RIFF Header
 	char RIFF[4]; //RIFF Header
 	int chunkSize; //RIFF Chunk Size

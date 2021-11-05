@@ -9,4 +9,4 @@ wavManager.o: wavManager.cpp wavManager.h wavheader.h wav.h
 wavheader.o: wavheader.cpp wavheader.h
 	g++ -c wavheader.cpp
 clean:
-	rm wav *.o
+	rm wavio *.o

@@ -11,7 +11,7 @@ public:
 	WavManager(const string &fileName);
 
 public:
-	WAV_HEADER header;
+	wav_header header;
 
 public:
 	void loadWav(const string &fileName);

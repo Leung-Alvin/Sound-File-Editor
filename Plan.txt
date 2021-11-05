@@ -1,0 +1,26 @@
+Start: Present start menu
+If user selects quit, exit program
+Else
+  Request filename from user
+  Open file specified by filename
+  If file does not exist or file is not wav file
+    display error message and goto start
+  else
+    read file metadata
+(1) display metadata to user
+    present user with processor menu
+    If user selects processor option
+      request output filename
+      run processor
+      save file
+      goto Start
+ 
+
+Make the executable: ./wavio
+When we run it, we should ask the user if they want to quit as a parameter "quit" (Function)
+"Type "Quit" to quit out of Wavio or type in a wav file name to continue" (Readline cin)
+If they type "Quit", we can just return 0.
+Else if they type nonexistent file, we ask them to type a valid file, throw error and ask again quit or start (Make into function)
+Else if they type noncompatible file, throw error and ask again quit or start
+Else, we open the file.
+
