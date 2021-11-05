@@ -17,10 +17,24 @@ Else
  
 
 Make the executable: ./wavio
+
+Start Sequence
 When we run it, we should ask the user if they want to quit as a parameter "quit" (Function)
 "Type "Quit" to quit out of Wavio or type in a wav file name to continue" (Readline cin)
 If they type "Quit", we can just return 0.
 Else if they type nonexistent file, we ask them to type a valid file, throw error and ask again quit or start (Make into function)
 Else if they type noncompatible file, throw error and ask again quit or start
 Else, we open the file.
+
+File Intake
+"Please type a filename to open"
+Create a string and use cin to store a file name
+Use an ifstream on said file name
+check if ifstream exists,
+If not, we throw error and restart the program from Start Sequence
+If so, we create a constructor of wavheader and wav, store the metadata onto wavheader then store the data
+onto wav. //https://stackoverflow.com/questions/13660777/c-reading-the-data-part-of-a-wav-file
+
+exists
+formatted correctly
 
