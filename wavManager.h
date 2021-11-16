@@ -15,6 +15,7 @@ public:
 
 public:
 	void loadWav(const string &fileName);
+	void normalize(float data[]);
 };
 
 #endif
