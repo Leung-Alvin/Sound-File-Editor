@@ -1,6 +1,7 @@
 #include "wav.h"
 #include "wavheader.h"
 #include "wavManager.h"
+#include <bits/stdc++.h>
 
 
 const int NUM_ARGS = 1;
@@ -12,6 +13,37 @@ bool startOrQuit(){
 	else if(s == "1"){ return 1;} //run program
 	else{return startOrQuit();}
 }
+
+std::string findDirectory(std::string fileName){
+	return fileName.system("find . -name" + " fileName");
+}
+
+
+bool readFile(){
+	std::cout << "Please type a filename to open" << std::endl;
+	std::string s;
+	std::cin >> s;
+/*
+	std::string directory = findDirectory(s);
+	std::ifstream ifs(directory+"/" + s);
+	if(!ifs){
+		return 0;
+	}
+	return 1;
+*/
+/*
+	int route = readFile();
+	if(route == 0){
+		stringstream error;
+		error << "File " << s << " does not exist";
+		throw invalid_argument (error.str());
+	}
+	else if(route == 1){
+		stringstream error;
+		error << "File " << 
+*/
+}
+
 
 int main(int argc, char const *argv[]){
 	bool check;
@@ -27,6 +59,12 @@ int main(int argc, char const *argv[]){
 	}
 	else{
 		std::cout <<"Program Run" << std:: endl;
+		if(readFile()){ 
+			std::cout << "file exists" << std:: endl;
+		}
+		else{
+			std::cout << "file does not exist" << std:: endl;
+		}
 
 
 	}
@@ -35,25 +73,7 @@ int main(int argc, char const *argv[]){
 
 // Access Token: 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
 
-/*
-int readFile(){
-	std::cout << "Please type a filename to open" << std::endl;
-	std::string s;
-	std::cin >> s;
-	std::ifstream ifs(s);
-	if(!ifs){
-		return 0;
-	}
-	int route = readFile();
-	if(route == 0){
-		stringstream error;
-		error << "File " << s << " does not exist";
-		throw invalid_argument (error.str());
-	}
-	else if(route == 1){
-		stringstream error;
-		error << "File " << 
-}*/
+
 
 	
 
