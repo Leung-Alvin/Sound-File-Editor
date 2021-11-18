@@ -17,5 +17,10 @@ public:
 
 unsigned char* getBuffer() const;
 
+void setHeader(wav_header h);
+
+void setBuffer(unsigned char* b);
+
+
 };
 #endif

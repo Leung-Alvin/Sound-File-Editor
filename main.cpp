@@ -1,11 +1,11 @@
 #include "wav.h"
 #include "wavheader.h"
 #include "wavManager.h"
-#include <bits/stdc++.h>
-#include <libgen.h>
-
 
 const int NUM_ARGS = 1;
+
+//Start menu that asks the user whether they want to quit or continue
+
 bool startOrQuit(){
 	std::cout << "Type \"0\" to quit out of Wavio or Type in \"1\" to continue" << std::endl;
 	std::string s;
@@ -14,6 +14,10 @@ bool startOrQuit(){
 	else if(s == "1"){ return 1;} //run program
 	else{return startOrQuit();}
 }
+
+//Reads the file name inside the folder of the program. If the name is invalid or is not formatted, 
+//readFile() returns a nullptr to be used in startSequence().
+
 Wav* readFile(){
 	std::cout << "Please type a file name to open" << std::endl;
 	std::string s;
@@ -27,10 +31,14 @@ Wav* readFile(){
 		buffer = new unsigned char[waveHeader.data_bytes];
 		file.read((char*) buffer, waveHeader.data_bytes);
 		file.close();
-		
+		ret->setHeader(waveHeader);
+		ret->setBuffer(buffer);
+		return ret;
 	}
 	return nullptr;
 }
+//Transitions startOrQuit() and readFile() together in order to create a smooth start sequence
+
 int startSequence(){
 	if(!startOrQuit()){
 	 std::cout << "Program End" << std::endl;
@@ -38,7 +46,8 @@ int startSequence(){
 	}
 	else{
 		std::cout <<"Program Run" << std:: endl;
-		if(readFile() == nullptr){ 
+		Wav* wav = readFile();
+		if(wav == nullptr){ 
 			std::cout << "File does not exist" << std:: endl;
 			return startSequence();
 		}
