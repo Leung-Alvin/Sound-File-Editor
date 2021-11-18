@@ -43,9 +43,9 @@ Metadata required are: filename, sample rate, bits per sample, and whether or no
 
 Processor Menu
 We can present a processor menu, maybe with numbers instead of words. The processes required are:
-Normalization
-Echo
-Gain Adjustment
+(0) Normalization
+(1) Echo
+(2) Gain Adjustment
 
 Normalization
 Ask for output file name
