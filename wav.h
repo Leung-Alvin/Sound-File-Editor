@@ -17,6 +17,8 @@ public:
 
 unsigned char* getBuffer() const;
 
+wav_header getHeader() const;
+
 void setHeader(wav_header h);
 
 void setBuffer(unsigned char* b);

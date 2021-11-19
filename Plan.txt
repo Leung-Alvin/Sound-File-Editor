@@ -35,7 +35,7 @@ If not, we throw error and restart the program from Start Sequence
 We check if the file is formatted correctly (correct file type (need to figure this out))
 If so, we create a constructor of wavheader and wav, store the metadata onto wavheader then store the data
 onto wav.
-The data needs to be stored in some sort of array so that iteration can be used for later step (normalization)
+The data needs to be stored in some sort of array so that iteration can be used for later step (normalization) (char* buffer).
 
 Metadata Printout
 After storing the metadata on the wavheader and the data itself. We can cout the metadata to the user.
@@ -49,7 +49,7 @@ We can present a processor menu, maybe with numbers instead of words. The proces
 
 Normalization
 Ask for output file name
-Iterate over the data array and find hte largest "sample value"
+Iterate over the data array and find the largest "sample value"
 
 exists
 formatted correctly

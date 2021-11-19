@@ -12,8 +12,8 @@ typedef struct wav_header{
 	char RIFF[4]; //RIFF Header
 	int chunkSize; //RIFF Chunk Size
 	char wave_header[4]; //
-	char fmt[4];
-	int fmt_size;
+	char fmt[4]; //Format header
+	int fmt_size; 
 	short audio_format;
 	short num_channels;
 	int sample_rate;

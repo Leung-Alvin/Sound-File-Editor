@@ -2,6 +2,10 @@
 #include "wavheader.h"
 #include "wavManager.h"
 
+wav_header Wav::getHeader() const{
+	return header;
+}
+
 unsigned char* Wav::getBuffer() const{
 	return buffer;
 }

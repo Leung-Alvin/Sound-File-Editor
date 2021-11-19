@@ -2,7 +2,7 @@
 #include "wav.h"
 #ifndef WAVMANAGER_H
 #define WAVMANAGER_H
-using namespace std;
+
 
 class WavManager{
 public:
