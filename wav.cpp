@@ -62,7 +62,7 @@ void Wav::setHeader(wav_header h){
 void Wav::setBuffer(){
 	buffer = new unsigned char[header.data_bytes];
 	for(int i = 0; i < header.data_bytes; i++){
-		buffer[i] = (char)(data[i]) * MAX_16BIT;
+		buffer[i] = (char)((data[i]) * MAX_16BIT);
 	}
 }
 
@@ -71,12 +71,12 @@ void Wav::setData(std::vector<float> newData){
 	buffer = new unsigned char[header.data_bytes];
 	int bufferit = 0;
 	while(bufferit < data.size()){
-		buffer[bufferit] = (char) data[bufferit] * MAX_16BIT;
+		buffer[bufferit] = (char) (data[bufferit] * MAX_16BIT);
 		bufferit++;
 	}
 	for(int i = 0; i < newData.size(); i++){
 		data.push_back(newData[i]);
-		buffer[bufferit+i] = (char) data[bufferit+i] * MAX_16BIT;
+		buffer[bufferit+i] = (char) (data[bufferit+i] * MAX_16BIT);
 	}
 
 }
