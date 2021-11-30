@@ -41,6 +41,9 @@ Metadata Printout
 After storing the metadata on the wavheader and the data itself. We can cout the metadata to the user.
 Metadata required are: filename, sample rate, bits per sample, and whether or not the wav is stereo or mono.
 
+File Out
+We can just make a wav object. To create a header, we just kind of copy the header or adjust header for speed or whatever. Data manipulation will be from processor. We shoud just copy a file.
+
 Processor Menu
 We can present a processor menu, maybe with numbers instead of words. The processes required are:
 (0) Normalization
@@ -53,4 +56,5 @@ Iterate over the data array and find the largest "sample value"
 
 exists
 formatted correctly
+
 

@@ -28,13 +28,14 @@ void Wav::read(const std::string &fileName){
 }
 
 
+
 void Wav::save(const std::string &outFileName){
 	std::ofstream outFile(outFileName,std::ios::out | std::ios::binary);
 	auto maxLocation = std::max_element(data.begin(),data.end(),abs_compare);
 	float maxValue = *maxLocation;
 	for(int i = 0; i < data.size(); i++){
 		data[i] = data[i] / maxValue;
-		buffer[i] = (short) (data[i] * MAX_16BIT);
+		buffer[i] = (char) (data[i] * MAX_16BIT);
 	}
 	outFile.write((char*) &header, sizeof(wav_header));
 	outFile.write((char*) buffer, header.data_bytes);
@@ -58,18 +59,26 @@ void Wav::setHeader(wav_header h){
 	header = h;
 }
 
-void Wav::setBuffer(unsigned char* b){
-	buffer = b;
+void Wav::setBuffer(){
+	buffer = new unsigned char[header.data_bytes];
+	for(int i = 0; i < header.data_bytes; i++){
+		buffer[i] = (char)(data[i]) * MAX_16BIT;
+	}
 }
 
 void Wav::setData(std::vector<float> newData){
-	data.reserve(newData.size());
-	for(int i = 0; i < newData.size(); i++){
-		data[i] = newData[i];
-		if(i >= data.size() -1){
-			data.push_back(newData[i]);
-		}
+	header.data_bytes;
+	buffer = new unsigned char[header.data_bytes];
+	int bufferit = 0;
+	while(bufferit < data.size()){
+		buffer[bufferit] = (char) data[bufferit] * MAX_16BIT;
+		bufferit++;
 	}
+	for(int i = 0; i < newData.size(); i++){
+		data.push_back(newData[i]);
+		buffer[bufferit+i] = (char) data[bufferit+i] * MAX_16BIT;
+	}
+
 }
 	
 

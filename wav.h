@@ -26,7 +26,7 @@ std::vector<float> getData() const;
 
 void setHeader(wav_header h);
 
-void setBuffer(unsigned char* b);
+void setBuffer();
 
 void setData(std::vector<float> data);
 

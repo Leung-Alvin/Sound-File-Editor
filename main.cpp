@@ -54,6 +54,7 @@ int startSequence(){
 		s+=".wav";
 		Wav wav;
 		wav.read(s);
+		wav.save("Test1.wav");
 		/*
 		if(wav == nullptr){ 
 			std::cout << "File does not exist" << std:: endl;
@@ -63,9 +64,11 @@ int startSequence(){
 		*/
 			std::cout << "File does exist" << std:: endl;
 			printMetaData(s,wav.getHeader());
-			std::vector<float> echoData = Echo::process(wav.getData(), 20, 1);
+			auto echoData = Echo::process(wav.getData(), 5, 44100);
 			wav.setData(echoData);
+			printMetaData("copy",wav.getHeader());
 			wav.save("Copy.wav");
+			return 0;
 
 
 	}
