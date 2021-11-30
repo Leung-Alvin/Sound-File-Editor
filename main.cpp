@@ -1,6 +1,7 @@
 #include "wav.h"
 #include "wavheader.h"
 #include "wavManager.h"
+#include "echo.h"
 
 const int NUM_ARGS = 1;
 const std::string separator = "---------------------";
@@ -8,7 +9,7 @@ const std::string separator = "---------------------";
 //Start menu that asks the user whether they want to quit or continue
 
 bool startOrQuit(){
-	std::cout << "Type \"0\" to quit out of Wavio or Type in \"1\" to continue" << std::endl;
+	std::cout << separator << "\nWelcome to Wavio! \nMenu (Type the Number in) \n\"0\" - Quit \n\"1\" Start \n" << separator<< std::endl;
 	std::string s;
 	std::cin >> s;
 	if(s == "0") {return 0;}
@@ -19,23 +20,7 @@ bool startOrQuit(){
 //Reads the file name inside the folder of the program. If the name is invalid or is not formatted, 
 //readFile() returns a nullptr to be used in startSequence().
 
-Wav* readFile(std::string s){
-	s+= ".wav";
-	wav_header waveHeader;
-	unsigned char* buffer;
-	Wav* ret = new Wav();
-	std::ifstream file(s, std::ios::binary | std::ios::in);
-	if(file.is_open()){
-		file.read((char*) &waveHeader, sizeof(wav_header));
-		buffer = new unsigned char[waveHeader.data_bytes];
-		file.read((char*) buffer, waveHeader.data_bytes);
-		file.close();
-		ret->setHeader(waveHeader);
-		ret->setBuffer(buffer);
-		return ret;
-	}
-	return nullptr;
-}
+
 //Transitions startOrQuit() and readFile() together in order to create a smooth start sequence
 
 
@@ -66,48 +51,21 @@ int startSequence(){
 		std::cout << "Please type a file name to open, exclude \".wav\"" << std::endl;
 		std::string s;
 		std::cin >> s;
-		Wav* wav = readFile(s);
+		s+=".wav";
+		Wav wav;
+		wav.read(s);
+		/*
 		if(wav == nullptr){ 
 			std::cout << "File does not exist" << std:: endl;
 			return startSequence();
 		}
 		else{
+		*/
 			std::cout << "File does exist" << std:: endl;
-			s+=".wav";
-			printMetaData(s,wav->getHeader());
-
-/*
-			Wav* copy = new Wav();
-			wav_header header = wav->getHeader();
-			copy->setHeader(header);
-			wav_header copyHeader = copy->getHeader();
-			unsigned char* buffer = wav->getBuffer();
-			copy->setBuffer(buffer);
-			unsigned char* copyBuffer = copy->getBuffer();
-
-			std::ifstream in(reinterpret_cast<char*>(&copyBuffer), std::ifstream::binary); //raw data without wave header
-
-
-			uint32_t size = in.tellg();
-			in.seekg(0,std::ios::end);
-			size = (uint32_t)in.tellg() - size;
-			in.seekg(0,std::ios::beg);
-			
-			
-
-			std::ofstream out ("copy.wav", std::ios::binary);
-			out.write(reinterpret_cast<char*>(&copyHeader), sizeof(copyHeader));
-
-			int16_t d;
-
-			for(int i = 0; i < size; ++i)
-			{
-				in.read(reinterpret_cast<char*> (&d), sizeof(int16_t));
-				out.write(reinterpret_cast<char*>(&d), sizeof(int16_t));
-			}
-*/				
-			
-		}
+			printMetaData(s,wav.getHeader());
+			std::vector<float> echoData = Echo::process(wav.getData(), 20, 1);
+			wav.setData(echoData);
+			wav.save("Copy.wav");
 
 
 	}
