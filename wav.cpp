@@ -7,14 +7,14 @@
 #include <cmath>
 #include <cstdlib>
 
-const float MAX_16BIT = 65535;
+const float MAX_16BIT = 65535; //Reason of Change 32768 65535
 
 static bool abs_compare(float a, float b)
 {
     return (std::abs(a) < std::abs(b));
 }
 
-void Wav::read(const std::string &fileName){
+int Wav::read(const std::string &fileName){
 	std::ifstream file(fileName, std::ios::binary | std::ios::in);
 	if(file.is_open()){
 		file.read((char*) &header,sizeof(wav_header));
@@ -22,9 +22,13 @@ void Wav::read(const std::string &fileName){
 		file.read((char*) buffer, header.data_bytes);
 		file.close();
 	}
+	if(header.wave_header != "WAVE"){
+		return -1;
+	}
 	for(int i = 0; i < header.data_bytes / header.sample_alignment; i++) {
 		data.push_back((float)buffer[i] / MAX_16BIT);
 	}
+	return 1;
 }
 
 
@@ -59,19 +63,31 @@ void Wav::setHeader(wav_header h){
 	header = h;
 }
 
-void Wav::setBuffer(){
-	buffer = new unsigned char[header.data_bytes];
-	for(int i = 0; i < header.data_bytes; i++){
-		buffer[i] = (char)((data[i]) * MAX_16BIT);
-	}
+void Wav::setBuffer(unsigned char* b){
+	buffer = b;
 }
 
 void Wav::setData(std::vector<float> newData){
-	header.data_bytes;
 	buffer = new unsigned char[header.data_bytes];
 	int bufferit = 0;
 	while(bufferit < data.size()){
-		buffer[bufferit] = (char) (data[bufferit] * MAX_16BIT);
+		buffer[bufferit] = data[bufferit];
+		bufferit++;
+	}
+	for(int i = 0; i < newData.size(); i++){
+		data.push_back(newData[i]);
+		buffer[bufferit+i] = (char) (data[bufferit+i] * MAX_16BIT);
+	}
+}
+	
+
+
+/*
+	header.data_bytes = header.num_channels * newData.size() * header.sample_alignment;
+	buffer = new unsigned char[header.data_bytes];
+	int bufferit = 0;
+	while(bufferit < data.size()){
+		buffer[bufferit] = data[i];
 		bufferit++;
 	}
 	for(int i = 0; i < newData.size(); i++){
@@ -79,12 +95,17 @@ void Wav::setData(std::vector<float> newData){
 		buffer[bufferit+i] = (char) (data[bufferit+i] * MAX_16BIT);
 	}
 
-}
-	
 
 
-//std::vector<float> getData() const;
 
-// [00110100, 10001010, ...]
-// binary conversion to decimal?
+
+
+
+	for(int i = 0; i < newData.size(); i++){
+		data[i] = newData[i];
+	}
+	//header.data_bytes = header.num_channels * newData.size() * header.sample_alignment;
+	//setBuffer();
+*/
+
 

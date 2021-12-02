@@ -1,5 +1,5 @@
-wavio: main.o wav.o wavheader.o wavManager.o echo.o
-	g++ -o wavio main.o wav.o wavheader.o wavManager.o echo.o
+wavio: main.o wav.o wavheader.o wavManager.o echo.o UI.o
+	g++ -o wavio main.o wav.o wavheader.o wavManager.o echo.o UI.o
 main.o: main.cpp wav.h wavheader.h wavManager.h
 	g++ -c main.cpp
 wav.o: wav.cpp wav.h
@@ -10,5 +10,7 @@ wavheader.o: wavheader.cpp wavheader.h
 	g++ -c wavheader.cpp
 echo.o: echo.cpp echo.h
 	g++ -c echo.cpp
+UI.o: UI.cpp UI.h
+	g++ -c UI.cpp
 clean:
 	rm wavio *.o

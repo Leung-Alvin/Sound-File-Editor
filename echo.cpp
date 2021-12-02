@@ -41,4 +41,10 @@ void Echo::processBuffer(unsigned char* buffer, int bufferSize){
 	createEcho(buffer, bufferSize);
 }
 
+y[n] = x[n] + y[n-d] 
+
+x[n] + x[n-d]?
+
+{3,6,7,3+3.5, 
 */
+
