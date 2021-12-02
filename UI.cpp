@@ -45,7 +45,10 @@ void UI::startSequence(){
 			std::cout << "Invalid File" << std::endl;
 			return startSequence();
 		}
+		std::cout << "File does exist" << std:: endl;
+		printMetaData(s,wav.getHeader());
 		wav.save("Test1.wav");
+/*
 		Wav test2;
 		test2.setHeader(wav.getHeader());
 		test2.setData(wav.getData());
@@ -57,6 +60,7 @@ void UI::startSequence(){
 		wav.setData(echoData);
 		printMetaData("copy",test2.getHeader());
 		wav.save("Test3.wav");
+*/
 
 
 	}

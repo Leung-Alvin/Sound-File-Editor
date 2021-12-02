@@ -22,7 +22,14 @@ int Wav::read(const std::string &fileName){
 		file.read((char*) buffer, header.data_bytes);
 		file.close();
 	}
-	if(header.wave_header != "WAVE"){
+	std::string riff_header(header.RIFF,4);
+	if(riff_header != "RIFF"){
+		std::cout << "Not a RIFF file" << std::endl;
+		return -1;
+	}
+	std::string wave_header(header.wave_header,4);
+	if(wave_header != "WAVE"){
+		std::cout << "Not a WAVE file" << std::endl;
 		return -1;
 	}
 	for(int i = 0; i < header.data_bytes / header.sample_alignment; i++) {
