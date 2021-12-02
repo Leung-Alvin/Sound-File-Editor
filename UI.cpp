@@ -30,6 +30,14 @@ void UI::printMetaData(std::string fileName, wav_header header){
 	std::cout << separator << std::endl;
 }
 
+void UI::processSequence(std::string fileName){
+	cout << separator << std::endl;
+	cout << "What would you like to do with " << fileName << std::endl;
+	cout << " 0 - Normalization \n 1 - Echo \n 2 - Gain Adjustment" << std::endl;
+	cout << separator << std::endl;
+}	
+	
+
 void UI::startSequence(){
 	if(!startOrQuit()){
 	 std::cout << "Program End" << std::endl;
@@ -47,7 +55,15 @@ void UI::startSequence(){
 		}
 		std::cout << "File does exist" << std:: endl;
 		printMetaData(s,wav.getHeader());
+		wav.printData("Data.txt");
 		wav.save("Test1.wav");
+		auto echoData = Echo::process(wav.getData(), 0.6, 5000);
+		wav.setData(echoData);
+		wav.printData("Data2.txt");
+		std::cout << separator << std::endl;
+		//wav.printData();
+		//wav.save("Test3.wav");
+		//processSequence(s);
 /*
 		Wav test2;
 		test2.setHeader(wav.getHeader());
@@ -56,10 +72,7 @@ void UI::startSequence(){
 		test2.save("Test2.wav");
 		std::cout << "File does exist" << std:: endl;
 		printMetaData(s,wav.getHeader());
-		auto echoData = Echo::process(wav.getData(), 0.6, 5000);
-		wav.setData(echoData);
-		printMetaData("copy",test2.getHeader());
-		wav.save("Test3.wav");
+
 */
 
 
@@ -67,5 +80,4 @@ void UI::startSequence(){
 
 }
 
-void UI::processSequence(){
-}	
+

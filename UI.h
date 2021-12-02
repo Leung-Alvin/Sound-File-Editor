@@ -13,6 +13,6 @@ public:
 bool startOrQuit();
 void printMetaData(std::string fileName, wav_header header);
 void startSequence();
-void processSequence();
+void processSequence(std::string fileName);
 
 };

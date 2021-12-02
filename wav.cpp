@@ -3,8 +3,10 @@
 #include "wavManager.h"
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <algorithm>
 #include <cmath>
+#include <iterator>
 #include <cstdlib>
 
 const float MAX_16BIT = 65535; //Reason of Change 32768 65535
@@ -24,12 +26,10 @@ int Wav::read(const std::string &fileName){
 	}
 	std::string riff_header(header.RIFF,4);
 	if(riff_header != "RIFF"){
-		std::cout << "Not a RIFF file" << std::endl;
 		return -1;
 	}
 	std::string wave_header(header.wave_header,4);
 	if(wave_header != "WAVE"){
-		std::cout << "Not a WAVE file" << std::endl;
 		return -1;
 	}
 	for(int i = 0; i < header.data_bytes / header.sample_alignment; i++) {
@@ -87,7 +87,14 @@ void Wav::setData(std::vector<float> newData){
 	}
 }
 	
-
+void Wav::printData(std::string fileName){
+	std::ofstream file;
+	file.open(fileName);
+	for(int i=0;i<data.size();++i){
+		file<<data[i]<<endl;
+	}
+	file.close();
+}
 
 /*
 	header.data_bytes = header.num_channels * newData.size() * header.sample_alignment;

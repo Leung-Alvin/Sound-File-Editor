@@ -36,6 +36,8 @@ int read(const std::string &fileName);
 
 void save(const std::string &outFileName);
 
+void printData(std::string fileName);
+
 
 };
 #endif
