@@ -13,20 +13,16 @@ Wav() = default;
 
 private:
 	wav_header header;
-	unsigned char* buffer;
 	std::vector<float> data; //new
 	
 public:
 
-unsigned char* getBuffer() const;
 
 wav_header getHeader() const;
 
 std::vector<float> getData() const;
 
 void setHeader(wav_header h);
-
-void setBuffer(unsigned char* b);
 
 void setData(std::vector<float> data);
 
@@ -38,6 +34,13 @@ void save(const std::string &outFileName);
 
 void printData(std::string fileName);
 
+void read8_bit(const std::string &fileName);
+
+void read16_bit(const std::string &fileName);
+
+void save8_bit(const std::string &outFileName);
+
+void save16_bit(const std::string &outFileName);
 
 };
 #endif

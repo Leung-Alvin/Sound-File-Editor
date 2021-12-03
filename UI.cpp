@@ -53,16 +53,15 @@ void UI::startSequence(){
 			std::cout << "Invalid File" << std::endl;
 			return startSequence();
 		}
+		else if(n == 0){
+			std:;cout <<" Not 8 or 16 Bit" << std::endl;
+		}
 		std::cout << "File does exist" << std:: endl;
 		printMetaData(s,wav.getHeader());
-		wav.printData("Data.txt");
 		wav.save("Test1.wav");
-		auto echoData = Echo::process(wav.getData(), 0.6, 5000);
+		auto echoData = Echo::process(wav.getData(), 0.4f, 5000);
 		wav.setData(echoData);
-		wav.printData("Data2.txt");
-		std::cout << separator << std::endl;
-		//wav.printData();
-		//wav.save("Test3.wav");
+		wav.save("Test3.wav");
 		//processSequence(s);
 /*
 		Wav test2;
