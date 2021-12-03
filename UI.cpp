@@ -58,7 +58,9 @@ void UI::startSequence(){
 		wav.printData("Data.txt");
 		wav.save("Test1.wav");
 		auto echoData = Echo::process(wav.getData(), 0.6, 5000);
+
 		wav.setData(echoData);
+        wav.save("Test3.wav");
 		wav.printData("Data2.txt");
 		std::cout << separator << std::endl;
 		//wav.printData();

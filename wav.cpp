@@ -46,7 +46,7 @@ void Wav::save(const std::string &outFileName){
 	float maxValue = *maxLocation;
 	for(int i = 0; i < data.size(); i++){
 		data[i] = data[i] / maxValue;
-		buffer[i] = (char) (data[i] * MAX_16BIT);
+		buffer[i] = (char) (data[i] * 100);
 	}
 	outFile.write((char*) &header, sizeof(wav_header));
 	outFile.write((char*) buffer, header.data_bytes);
