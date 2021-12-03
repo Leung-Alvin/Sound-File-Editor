@@ -90,7 +90,7 @@ void Wav::save16_bit(const std::string &outFileName){
 	short* buffer = new short[header.data_bytes];
 	for(int i = 0; i < data.size(); i++){
 		data[i] = data[i] / maxValue;
-		buffer[i] = (char) (data[i] * MAX_16BIT);
+		buffer[i] = (char) (data[i] * 100);
 	}
 	outFile.write((char*) &header, sizeof(wav_header));
 	outFile.write((char*) buffer, header.data_bytes);

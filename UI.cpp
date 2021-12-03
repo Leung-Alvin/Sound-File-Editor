@@ -59,9 +59,20 @@ void UI::startSequence(){
 		std::cout << "File does exist" << std:: endl;
 		printMetaData(s,wav.getHeader());
 		wav.save("Test1.wav");
+<<<<<<< HEAD
 		auto echoData = Echo::process(wav.getData(), 0.4f, 5000);
 		wav.setData(echoData);
 		wav.save("Test3.wav");
+=======
+		auto echoData = Echo::process(wav.getData(), 0.6, 5000);
+
+		wav.setData(echoData);
+        wav.save("Test3.wav");
+		wav.printData("Data2.txt");
+		std::cout << separator << std::endl;
+		//wav.printData();
+		//wav.save("Test3.wav");
+>>>>>>> 15056cc3352b3a6c3664075fd20c50f5937f6d86
 		//processSequence(s);
 /*
 		Wav test2;
