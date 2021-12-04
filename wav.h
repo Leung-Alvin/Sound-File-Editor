@@ -13,7 +13,7 @@ Wav() = default;
 
 private:
 	wav_header header;
-	std::vector<float> data; //new
+	std::vector<float> data;
 	
 public:
 

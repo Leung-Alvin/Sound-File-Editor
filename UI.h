@@ -2,6 +2,8 @@
 #include "wavheader.h"
 #include "wavManager.h"
 #include "echo.h"
+#include "gainadjustment.h"
+#include "normalization.h"
 
 class UI{
 public:
@@ -13,6 +15,6 @@ public:
 bool startOrQuit();
 void printMetaData(std::string fileName, wav_header header);
 void startSequence();
-void processSequence(std::string fileName);
+void processSequence(Wav w);
 
 };

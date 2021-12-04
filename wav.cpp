@@ -11,24 +11,24 @@
 #include <variant>
 #include <iostream>
 
-const float MAX_16BIT = 65535; //Reason of Change 32768 65535
+const float MAX_16BIT = 32767; //Reason of Change 32768 65535
 
-const float MAX_8BIT = 512; //256 512
+const float MAX_8BIT = 256; //256 512
 
 static bool abs_compare(float a, float b)
 {
     return (std::abs(a) < std::abs(b));
 }
 
-
 void Wav::read8_bit(const std::string &fileName){
 	std::ifstream file(fileName, std::ios::binary | std::ios::in);
 	char* buffer = new char[header.data_bytes];
 	file.read((char*)buffer, header.data_bytes);
-	for(int i = 0; i < header.data_bytes/header.sample_alignment; i++){
+	for(int i = 0; i < header.data_bytes / header.sample_alignment; i++){
 		data.push_back((float) buffer[i] / MAX_8BIT);
 	}
 	file.close();
+	delete[] buffer;
 }
 
 void Wav::read16_bit(const std::string &fileName){
@@ -39,6 +39,7 @@ void Wav::read16_bit(const std::string &fileName){
 		data.push_back((float) buffer[i] / MAX_16BIT);
 	}
 	file.close();
+	delete[] buffer;
 }
 
 int Wav::read(const std::string &fileName){
@@ -49,11 +50,11 @@ int Wav::read(const std::string &fileName){
 		if(bd == 8){ 
 			read8_bit(fileName);
 		}
-		/*else if(bd == 16){
+		else if(bd == 16){
 			read16_bit(fileName);
-		}*/
+		}
 		else{
-			read16_bit(fileName);
+			return -1;
 		}
 	}
 	std::string riff_header(header.RIFF,4);
@@ -68,18 +69,22 @@ int Wav::read(const std::string &fileName){
 	return 1;
 }
 
+
 void Wav::save8_bit(const std::string &outFileName){
 	std::ofstream outFile(outFileName,std::ios::out | std::ios::binary);
 	auto maxLocation = std::max_element(data.begin(),data.end(),abs_compare);
 	float maxValue = *maxLocation;
-	char* buffer = new char[header.data_bytes];
+	char* buffer = new char[data.size()];
 	for(int i = 0; i < data.size(); i++){
 		data[i] = data[i] / maxValue;
 		buffer[i] = (char) (data[i] * MAX_8BIT);
 	}
+	header.data_bytes = data.size() * header.sample_alignment;
+	header.chunkSize = header.data_bytes + 44 - 8;
 	outFile.write((char*) &header, sizeof(wav_header));
 	outFile.write((char*) buffer, header.data_bytes);
 	outFile.close();
+	delete[] buffer;
 	
 }
 
@@ -87,26 +92,30 @@ void Wav::save16_bit(const std::string &outFileName){
 	std::ofstream outFile(outFileName,std::ios::out | std::ios::binary);
 	auto maxLocation = std::max_element(data.begin(),data.end(),abs_compare);
 	float maxValue = *maxLocation;
-	short* buffer = new short[header.data_bytes];
+	short* buffer = new short[data.size()];
 	for(int i = 0; i < data.size(); i++){
 		data[i] = data[i] / maxValue;
-		buffer[i] = (char) (data[i] * 100);
+		buffer[i] = (short) (data[i] * MAX_16BIT);
 	}
+	header.data_bytes = data.size() * header.sample_alignment;
+	header.chunkSize = header.data_bytes + 44 - 8;
 	outFile.write((char*) &header, sizeof(wav_header));
 	outFile.write((char*) buffer, header.data_bytes);
 	outFile.close();
+	delete[] buffer;
 	
 }
 
 
 void Wav::save(const std::string &outFileName){
 	int bd = header.bit_depth;
-	if(bd == 8 | bd ==16){
+	std::cout << bd << std::endl;
+	if(bd == 8){
 		save8_bit(outFileName);
 	}
-	/*else if(bd == 16){
+	else if(bd == 16){
 		save16_bit(outFileName);
-	}*/
+	}
 }
 		
 
@@ -126,7 +135,7 @@ void Wav::setHeader(wav_header h){
 
 void Wav::setData(std::vector<float> newData){
 	for(int i = 0; i < newData.size(); i++){
-		data.push_back(newData[i]);
+		data[i] = newData[i];
 	}
 }
 	

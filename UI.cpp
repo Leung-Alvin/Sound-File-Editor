@@ -30,12 +30,52 @@ void UI::printMetaData(std::string fileName, wav_header header){
 	std::cout << separator << std::endl;
 }
 
-void UI::processSequence(std::string fileName){
-	cout << separator << std::endl;
-	cout << "What would you like to do with " << fileName << std::endl;
-	cout << " 0 - Normalization \n 1 - Echo \n 2 - Gain Adjustment" << std::endl;
-	cout << separator << std::endl;
-}	
+void UI::processSequence(Wav w){
+	std::cout << separator << std::endl;
+	std::cout << "What would you like to do" << std::endl;
+	std::cout << " 0 - Normalization \n 1 - Echo \n 2 - Gain Adjustment" << std::endl;
+	std::cout << separator << std::endl;
+	std::string s;
+	std::cin >> s;
+	if(s == "0") { //run normalization
+		std::string outFileName;
+		std::cout << "What would you like to name the output file? Exclude .wav" << std::endl;
+		std:: cin >> outFileName;	
+		outFileName += ".wav";
+		auto normData = Normalization::process(w.getData());
+		w.setData(normData);
+		w.save(outFileName);	
+	}
+	else if( s == "1") { //run echo
+		float gain;
+		int delay;
+		std::string outFileName;
+		std::cout << "What would you like to name the output file? Exclude .wav" << std::endl;
+		std:: cin >> outFileName;
+		outFileName += ".wav";
+		std::cout<< "How much gain? (Float)" << std::endl;
+		std:: cin >> gain;
+		std::cout <<"How much delay? (Integer)" << std::endl;
+		std::cin >> delay;
+		auto echoData = Echo::process(w.getData(), gain, delay);
+		w.setData(echoData);
+		w.save(outFileName);
+	}
+	else if (s == "2") { //run gain adjustment
+		float gain;
+		std::string outFileName;
+		std::cout << "What would you like to name the output file? Exclude .wav" << std::endl;
+		std:: cin >> outFileName;
+		outFileName += ".wav";
+		std::cout<< "How much gain? (Float)" << std::endl;
+		std:: cin >> gain;
+		auto gainData = GainAdjustment::process(w.getData(),gain);
+		w.setData(gainData);
+		w.save(outFileName);
+	}
+	
+}
+	
 	
 
 void UI::startSequence(){
@@ -59,32 +99,8 @@ void UI::startSequence(){
 		std::cout << "File does exist" << std:: endl;
 		printMetaData(s,wav.getHeader());
 		wav.save("Test1.wav");
-<<<<<<< HEAD
-		auto echoData = Echo::process(wav.getData(), 0.4f, 5000);
-		wav.setData(echoData);
-		wav.save("Test3.wav");
-=======
-		auto echoData = Echo::process(wav.getData(), 0.6, 5000);
-
-		wav.setData(echoData);
-        wav.save("Test3.wav");
-		wav.printData("Data2.txt");
-		std::cout << separator << std::endl;
-		//wav.printData();
-		//wav.save("Test3.wav");
->>>>>>> 15056cc3352b3a6c3664075fd20c50f5937f6d86
-		//processSequence(s);
-/*
-		Wav test2;
-		test2.setHeader(wav.getHeader());
-		test2.setData(wav.getData());
-		test2.setBuffer(wav.getBuffer());
-		test2.save("Test2.wav");
-		std::cout << "File does exist" << std:: endl;
-		printMetaData(s,wav.getHeader());
-
-*/
-
+		processSequence(wav);
+		startSequence();
 
 	}
 
