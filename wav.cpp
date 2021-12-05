@@ -1,14 +1,9 @@
 #include "wav.h"
 #include "wavheader.h"
-#include "wavManager.h"
 #include <vector>
-#include <iostream>
 #include <fstream>
 #include <algorithm>
 #include <cmath>
-#include <iterator>
-#include <cstdlib>
-#include <variant>
 #include <iostream>
 
 const float MAX_16BIT = 32767; //Reason of Change 32768 65535
@@ -139,39 +134,5 @@ void Wav::setData(std::vector<float> newData){
 	}
 }
 	
-void Wav::printData(std::string fileName){
-	std::ofstream file;
-	file.open(fileName);
-	for(int i=0;i<data.size();++i){
-		file<<data[i]<<endl;
-	}
-	file.close();
-}
-
-/*
-	header.data_bytes = header.num_channels * newData.size() * header.sample_alignment;
-	buffer = new unsigned char[header.data_bytes];
-	int bufferit = 0;
-	while(bufferit < data.size()){
-		buffer[bufferit] = data[i];
-		bufferit++;
-	}
-	for(int i = 0; i < newData.size(); i++){
-		data.push_back(newData[i]);
-		buffer[bufferit+i] = (char) (data[bufferit+i] * MAX_16BIT);
-	}
-
-
-
-
-
-
-
-	for(int i = 0; i < newData.size(); i++){
-		data[i] = newData[i];
-	}
-	//header.data_bytes = header.num_channels * newData.size() * header.sample_alignment;
-	//setBuffer();
-*/
 
 
