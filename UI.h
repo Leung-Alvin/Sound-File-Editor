@@ -3,10 +3,15 @@
 #include "echo.h"
 #include "gainadjustment.h"
 #include "normalization.h"
-
+   /**
+    * This class represents the UI class responsible for interacting with the user and taking in inputs or printing out information.
+    */
 class UI{
 public:
-const int NUM_ARGS = 1;
+
+    /**
+     * String constant that represents a separator using dashes to separate parts of text
+     */
 const std::string separator = "---------------------";
     /**
      * constructor for UI class

@@ -98,7 +98,6 @@ void UI::startSequence(){
 		}
 		std::cout << "File does exist" << std:: endl;
 		printMetaData(s,wav.getHeader());
-		wav.save("Test1.wav");
 		processSequence(wav);
 		startSequence();
 

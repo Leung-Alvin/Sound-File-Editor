@@ -1,7 +1,9 @@
 #ifndef GAINADJUSTMENT_H
 #define GAINADJUSTMENT_H
 #include <vector>
-
+   /**
+    * This class represents the gain adjustment proccessor used to amplify sound data.
+    */
 class GainAdjustment{
 public:
     /**

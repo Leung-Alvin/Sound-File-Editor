@@ -1,0 +1,124 @@
+\hypertarget{structwav__header}{}\section{wav\+\_\+header Struct Reference}
+\label{structwav__header}\index{wav\+\_\+header@{wav\+\_\+header}}
+
+
+{\ttfamily \#include $<$wavheader.\+h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{structwav__header_a922454e449922ac5dd868afac8f883da}{R\+I\+FF} \mbox{[}4\mbox{]}
+\item 
+int \hyperlink{structwav__header_af71680c0a1a1a432de36737e56153894}{chunk\+Size}
+\item 
+char \hyperlink{structwav__header_a0dc0cff34ad7fe5e59c5cbcee1640354}{wave\+\_\+header} \mbox{[}4\mbox{]}
+\item 
+char \hyperlink{structwav__header_ad766f550ae18a908d86ba1e72899b4b8}{fmt} \mbox{[}4\mbox{]}
+\item 
+int \hyperlink{structwav__header_a92e6134a93f1c2c7d8084fadc7645823}{fmt\+\_\+size}
+\item 
+short \hyperlink{structwav__header_a94c9ee0387f846c47eb9e97636994d93}{audio\+\_\+format}
+\item 
+short \hyperlink{structwav__header_a625d84de0f598e50c072d725f6e3b6b8}{num\+\_\+channels}
+\item 
+int \hyperlink{structwav__header_a0632019c676aa88f0351c0ab11461de0}{sample\+\_\+rate}
+\item 
+int \hyperlink{structwav__header_a8330740d45200d6aee4ba54fc0d834d8}{byte\+\_\+rate}
+\item 
+short \hyperlink{structwav__header_a2672b73c81973008677db6349fbc232a}{sample\+\_\+alignment}
+\item 
+short \hyperlink{structwav__header_a63fa60069060bae97c8a64c5b37afa23}{bit\+\_\+depth}
+\item 
+char \hyperlink{structwav__header_ae43fac12459053e98a80e3879c5cd2a7}{data\+\_\+header} \mbox{[}4\mbox{]}
+\item 
+int \hyperlink{structwav__header_a3eeeca270947eab7c7aaee61bbee9b0e}{data\+\_\+bytes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A structure to represent the header of W\+AV files 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structwav__header_a94c9ee0387f846c47eb9e97636994d93}\label{structwav__header_a94c9ee0387f846c47eb9e97636994d93}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!audio\+\_\+format@{audio\+\_\+format}}
+\index{audio\+\_\+format@{audio\+\_\+format}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{audio\+\_\+format}{audio\_format}}
+{\footnotesize\ttfamily short wav\+\_\+header\+::audio\+\_\+format}
+
+A short that determines the type of format (1 is P\+CM) \mbox{\Hypertarget{structwav__header_a63fa60069060bae97c8a64c5b37afa23}\label{structwav__header_a63fa60069060bae97c8a64c5b37afa23}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!bit\+\_\+depth@{bit\+\_\+depth}}
+\index{bit\+\_\+depth@{bit\+\_\+depth}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{bit\+\_\+depth}{bit\_depth}}
+{\footnotesize\ttfamily short wav\+\_\+header\+::bit\+\_\+depth}
+
+An short that represents the number of bits per sample \mbox{\Hypertarget{structwav__header_a8330740d45200d6aee4ba54fc0d834d8}\label{structwav__header_a8330740d45200d6aee4ba54fc0d834d8}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!byte\+\_\+rate@{byte\+\_\+rate}}
+\index{byte\+\_\+rate@{byte\+\_\+rate}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{byte\+\_\+rate}{byte\_rate}}
+{\footnotesize\ttfamily int wav\+\_\+header\+::byte\+\_\+rate}
+
+An integer that represents Byte Rate, Byte Rate = (Sample Rate $\ast$ Bits\+Per\+Sample $\ast$ Channels) /8 \mbox{\Hypertarget{structwav__header_af71680c0a1a1a432de36737e56153894}\label{structwav__header_af71680c0a1a1a432de36737e56153894}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!chunk\+Size@{chunk\+Size}}
+\index{chunk\+Size@{chunk\+Size}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{chunk\+Size}{chunkSize}}
+{\footnotesize\ttfamily int wav\+\_\+header\+::chunk\+Size}
+
+An integer referring to the R\+I\+FF Chunk size \mbox{\Hypertarget{structwav__header_a3eeeca270947eab7c7aaee61bbee9b0e}\label{structwav__header_a3eeeca270947eab7c7aaee61bbee9b0e}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!data\+\_\+bytes@{data\+\_\+bytes}}
+\index{data\+\_\+bytes@{data\+\_\+bytes}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{data\+\_\+bytes}{data\_bytes}}
+{\footnotesize\ttfamily int wav\+\_\+header\+::data\+\_\+bytes}
+
+An integer that stores the number of data bytes the W\+AV has. \mbox{\Hypertarget{structwav__header_ae43fac12459053e98a80e3879c5cd2a7}\label{structwav__header_ae43fac12459053e98a80e3879c5cd2a7}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!data\+\_\+header@{data\+\_\+header}}
+\index{data\+\_\+header@{data\+\_\+header}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{data\+\_\+header}{data\_header}}
+{\footnotesize\ttfamily char wav\+\_\+header\+::data\+\_\+header\mbox{[}4\mbox{]}}
+
+A character array that stores the data header. \mbox{\Hypertarget{structwav__header_ad766f550ae18a908d86ba1e72899b4b8}\label{structwav__header_ad766f550ae18a908d86ba1e72899b4b8}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!fmt@{fmt}}
+\index{fmt@{fmt}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{fmt}{fmt}}
+{\footnotesize\ttfamily char wav\+\_\+header\+::fmt\mbox{[}4\mbox{]}}
+
+A character array that stores the fmt header \mbox{\Hypertarget{structwav__header_a92e6134a93f1c2c7d8084fadc7645823}\label{structwav__header_a92e6134a93f1c2c7d8084fadc7645823}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!fmt\+\_\+size@{fmt\+\_\+size}}
+\index{fmt\+\_\+size@{fmt\+\_\+size}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{fmt\+\_\+size}{fmt\_size}}
+{\footnotesize\ttfamily int wav\+\_\+header\+::fmt\+\_\+size}
+
+An integer representing the length of format data \mbox{\Hypertarget{structwav__header_a625d84de0f598e50c072d725f6e3b6b8}\label{structwav__header_a625d84de0f598e50c072d725f6e3b6b8}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!num\+\_\+channels@{num\+\_\+channels}}
+\index{num\+\_\+channels@{num\+\_\+channels}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{num\+\_\+channels}{num\_channels}}
+{\footnotesize\ttfamily short wav\+\_\+header\+::num\+\_\+channels}
+
+A short that represents the number of channels \mbox{\Hypertarget{structwav__header_a922454e449922ac5dd868afac8f883da}\label{structwav__header_a922454e449922ac5dd868afac8f883da}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!R\+I\+FF@{R\+I\+FF}}
+\index{R\+I\+FF@{R\+I\+FF}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{R\+I\+FF}{RIFF}}
+{\footnotesize\ttfamily char wav\+\_\+header\+::\+R\+I\+FF\mbox{[}4\mbox{]}}
+
+A character array the stores the R\+I\+FF header \mbox{\Hypertarget{structwav__header_a2672b73c81973008677db6349fbc232a}\label{structwav__header_a2672b73c81973008677db6349fbc232a}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!sample\+\_\+alignment@{sample\+\_\+alignment}}
+\index{sample\+\_\+alignment@{sample\+\_\+alignment}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{sample\+\_\+alignment}{sample\_alignment}}
+{\footnotesize\ttfamily short wav\+\_\+header\+::sample\+\_\+alignment}
+
+A short that represents Sample Alignment (SA), SA = (Bits\+Per\+Sample $\ast$ Channels) / 8.\+1 -\/ 8 bit mono2 -\/ 8 bit stereo/16 bit mono4 -\/ 16 bit stereo \mbox{\Hypertarget{structwav__header_a0632019c676aa88f0351c0ab11461de0}\label{structwav__header_a0632019c676aa88f0351c0ab11461de0}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!sample\+\_\+rate@{sample\+\_\+rate}}
+\index{sample\+\_\+rate@{sample\+\_\+rate}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{sample\+\_\+rate}{sample\_rate}}
+{\footnotesize\ttfamily int wav\+\_\+header\+::sample\+\_\+rate}
+
+An integer that represents Sample Rate, Sample Rate = \# of Samples/second, or Hertz \mbox{\Hypertarget{structwav__header_a0dc0cff34ad7fe5e59c5cbcee1640354}\label{structwav__header_a0dc0cff34ad7fe5e59c5cbcee1640354}} 
+\index{wav\+\_\+header@{wav\+\_\+header}!wave\+\_\+header@{wave\+\_\+header}}
+\index{wave\+\_\+header@{wave\+\_\+header}!wav\+\_\+header@{wav\+\_\+header}}
+\subsubsection{\texorpdfstring{wave\+\_\+header}{wave\_header}}
+{\footnotesize\ttfamily char wav\+\_\+header\+::wave\+\_\+header\mbox{[}4\mbox{]}}
+
+A character array that stores the W\+AV header 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+wavheader.\+h\end{DoxyCompactItemize}

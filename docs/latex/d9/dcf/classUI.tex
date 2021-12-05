@@ -1,0 +1,90 @@
+\hypertarget{classUI}{}\section{UI Class Reference}
+\label{classUI}\index{UI@{UI}}
+
+
+{\ttfamily \#include $<$U\+I.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUI_a3cd5131e957f45588b448c5c55ed0adf}{UI} ()=default
+\item 
+bool \hyperlink{classUI_ac9b2da5386256bf5d47e59306c3743a0}{start\+Or\+Quit} ()
+\item 
+void \hyperlink{classUI_a93d537361c79858e385c632bc147f63c}{print\+Meta\+Data} (std\+::string file\+Name, \hyperlink{structwav__header}{wav\+\_\+header} header)
+\item 
+void \hyperlink{classUI_abacdf6ae7042f82147d748c5669f5ca3}{start\+Sequence} ()
+\item 
+void \hyperlink{classUI_a3b363fd2cd390605325ec3fb348d9580}{process\+Sequence} (\hyperlink{classWav}{Wav} w)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \hyperlink{classUI_a73df1331f3f022d956843672ad15d873}{separator} = \char`\"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents the \hyperlink{classUI}{UI} class responsible for interacting with the user and taking in inputs or printing out information. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUI_a3cd5131e957f45588b448c5c55ed0adf}\label{classUI_a3cd5131e957f45588b448c5c55ed0adf}} 
+\index{UI@{UI}!UI@{UI}}
+\index{UI@{UI}!UI@{UI}}
+\subsubsection{\texorpdfstring{U\+I()}{UI()}}
+{\footnotesize\ttfamily U\+I\+::\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+constructor for \hyperlink{classUI}{UI} class 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classUI_a93d537361c79858e385c632bc147f63c}\label{classUI_a93d537361c79858e385c632bc147f63c}} 
+\index{UI@{UI}!print\+Meta\+Data@{print\+Meta\+Data}}
+\index{print\+Meta\+Data@{print\+Meta\+Data}!UI@{UI}}
+\subsubsection{\texorpdfstring{print\+Meta\+Data()}{printMetaData()}}
+{\footnotesize\ttfamily void U\+I\+::print\+Meta\+Data (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name,  }\item[{\hyperlink{structwav__header}{wav\+\_\+header}}]{header }\end{DoxyParamCaption})}
+
+prints the metadata revolving a certain W\+AV file 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & the wav file that needs its meta data printed \\
+\hline
+{\em header} & the header of the wav file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUI_a3b363fd2cd390605325ec3fb348d9580}\label{classUI_a3b363fd2cd390605325ec3fb348d9580}} 
+\index{UI@{UI}!process\+Sequence@{process\+Sequence}}
+\index{process\+Sequence@{process\+Sequence}!UI@{UI}}
+\subsubsection{\texorpdfstring{process\+Sequence()}{processSequence()}}
+{\footnotesize\ttfamily void U\+I\+::process\+Sequence (\begin{DoxyParamCaption}\item[{\hyperlink{classWav}{Wav}}]{w }\end{DoxyParamCaption})}
+
+used to process inputs and allow the user to choose a processor (echo, normalize, gain) 
+\begin{DoxyParams}{Parameters}
+{\em w} & the \hyperlink{classWav}{Wav} object that needs to be processed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUI_ac9b2da5386256bf5d47e59306c3743a0}\label{classUI_ac9b2da5386256bf5d47e59306c3743a0}} 
+\index{UI@{UI}!start\+Or\+Quit@{start\+Or\+Quit}}
+\index{start\+Or\+Quit@{start\+Or\+Quit}!UI@{UI}}
+\subsubsection{\texorpdfstring{start\+Or\+Quit()}{startOrQuit()}}
+{\footnotesize\ttfamily bool U\+I\+::start\+Or\+Quit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+used to prompt the user to determine whether to start or quit the program \mbox{\Hypertarget{classUI_abacdf6ae7042f82147d748c5669f5ca3}\label{classUI_abacdf6ae7042f82147d748c5669f5ca3}} 
+\index{UI@{UI}!start\+Sequence@{start\+Sequence}}
+\index{start\+Sequence@{start\+Sequence}!UI@{UI}}
+\subsubsection{\texorpdfstring{start\+Sequence()}{startSequence()}}
+{\footnotesize\ttfamily void U\+I\+::start\+Sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+used to start the whole program and can be used to reset the program from the beginning. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classUI_a73df1331f3f022d956843672ad15d873}\label{classUI_a73df1331f3f022d956843672ad15d873}} 
+\index{UI@{UI}!separator@{separator}}
+\index{separator@{separator}!UI@{UI}}
+\subsubsection{\texorpdfstring{separator}{separator}}
+{\footnotesize\ttfamily const std\+::string U\+I\+::separator = \char`\"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\char`\"{}}
+
+String constant that represents a separator using dashes to separate parts of text 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+U\+I.\+h\item 
+U\+I.\+cpp\end{DoxyCompactItemize}

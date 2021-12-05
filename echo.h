@@ -1,7 +1,9 @@
 #ifndef ECHO_H
 #define ECHO_H
 #include <vector>
-
+   /**
+    * This class represents the echo proccessor used to create echoes in sound data.
+    */
 class Echo{
 public:
     /**

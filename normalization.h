@@ -3,6 +3,9 @@
 #include "gainadjustment.h"
 #include <cmath>
 #include <vector>
+   /**
+    * This class represents the normalization proccessor used to normalize sound data.
+    */
 class Normalization{
 public:
     /**

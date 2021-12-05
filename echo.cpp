@@ -13,9 +13,4 @@ std::vector<float> Echo::process(const std::vector<float>& input, float gain, in
 	return output;
 }
 
-/*
-for loop the data
-scale every value
-*/
-
 
