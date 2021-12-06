@@ -88,13 +88,12 @@ void UI::startSequence(){
 		std::cin >> s;
 		s+=".wav";
 		Wav wav;
+		try{
 		int n = wav.read(s);
-		if(n == -1){
-			std::cout << "Invalid File" << std::endl;
-			return startSequence();
 		}
-		else if(n == 0){
-			std:;cout <<" Not 8 or 16 Bit" << std::endl;
+		catch(std::invalid_argument e){
+			std::cout << e.what() << std::endl;
+			return startSequence();
 		}
 		std::cout << "File does exist" << std:: endl;
 		printMetaData(s,wav.getHeader());

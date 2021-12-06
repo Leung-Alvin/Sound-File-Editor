@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <cmath>
 #include <iostream>
+#include <sstream>
+#include <exception>
 
 const float MAX_16BIT = 32767; //Reason of Change 32768 65535
 
@@ -49,16 +51,22 @@ int Wav::read(const std::string &fileName){
 			read16_bit(fileName);
 		}
 		else{
-			return -1;
+			std::stringstream error;
+			error << "File is invalid";
+			throw std::invalid_argument(error.str());
 		}
 	}
 	std::string riff_header(header.RIFF,4);
 	std::string wave_header(header.wave_header,4);
 	if(riff_header != "RIFF"){ 
-		return -1;
+		std::stringstream error;
+		error << "File is invalid";
+		throw std::invalid_argument(error.str());;
 	}
 	if(wave_header != "WAVE"){
-		return -1;
+		std::stringstream error;
+		error << "File is invalid";
+		throw std::invalid_argument(error.str());
 	}
 	file.close();
 	return 1;
